@@ -6,7 +6,7 @@
 # catalog-version 2.2
 Name:		texlive-mltex
 Version:	2.2
-Release:	2
+Release:	3
 Summary:	The MLTeX system
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/generic/mltex
@@ -17,9 +17,9 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
+Requires(post):	texlive-tetex
 Requires:	texlive-latex
 Requires:	texlive-mltex.bin
-Requires(post):	texlive-tetex
 
 %description
 MLTeX is a modification of TeX version >=3.0 that allows the
@@ -60,6 +60,8 @@ mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/mltex <<EOF
+#
+# from mltex:
 mllatex pdftex language.dat -translate-file=cp227.tcx -mltex mllatex.ini
 mltex pdftex - -translate-file=cp227.tcx -mltex mltex.ini
 EOF
