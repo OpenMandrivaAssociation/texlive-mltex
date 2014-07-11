@@ -6,7 +6,7 @@
 # catalog-version 2.2
 Name:		texlive-mltex
 Version:	2.2
-Release:	9
+Release:	10
 Summary:	The MLTeX system
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/generic/mltex
