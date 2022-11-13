@@ -1,18 +1,12 @@
-# revision 30214
-# category Package
-# catalog-ctan /systems/generic/mltex
-# catalog-date 2012-07-16 22:11:02 +0200
-# catalog-license knuth
-# catalog-version 2.2
 Name:		texlive-mltex
-Version:	2.2
-Release:	13
+Version:	62145
+Release:	1
 Summary:	The MLTeX system
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/generic/mltex
 License:	KNUTH
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -28,12 +22,12 @@ Computer Modern (CM) fonts. The system is distributed as a TeX
 change file.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -51,7 +45,7 @@ change file.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
