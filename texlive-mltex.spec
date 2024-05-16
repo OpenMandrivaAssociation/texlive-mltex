@@ -1,6 +1,6 @@
 Name:		texlive-mltex
-Version:	62145
-Release:	2
+Version:	70995
+Release:	1
 Summary:	The MLTeX system
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/generic/mltex
