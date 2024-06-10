@@ -1,5 +1,5 @@
 Name:		texlive-mltex
-Version:	70995
+Version:	71363
 Release:	1
 Summary:	The MLTeX system
 Group:		Publishing
