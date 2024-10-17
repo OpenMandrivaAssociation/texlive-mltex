@@ -3,7 +3,7 @@ Version:	71363
 Release:	1
 Summary:	The MLTeX system
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/systems/generic/mltex
+URL:		https://www.ctan.org/tex-archive/systems/generic/mltex
 License:	KNUTH
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.doc.r%{version}.tar.xz
