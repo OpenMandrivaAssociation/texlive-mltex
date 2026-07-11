@@ -1,61 +1,38 @@
-Name:		texlive-mltex
-Version:	71363
-Release:	1
+%global tl_name mltex
+%global tl_revision 71363
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.2
+Release:	%{tl_revision}.1
 Summary:	The MLTeX system
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/systems/generic/mltex
-License:	KNUTH
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.doc.r%{version}.tar.xz
+License:	knuth
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/mltex.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
-Requires(post):	texlive-tetex
-Requires:	texlive-latex
-Requires:	texlive-mltex.bin
+BuildSystem:	texlive
+Requires:	texlive(babel)
+Requires:	texlive(cm)
+Requires:	texlive(dehyph)
+Requires:	texlive(firstaid)
+Requires:	texlive(hyph-utf8)
+Requires:	texlive(hyphen-base)
+Requires:	texlive(knuth-lib)
+Requires:	texlive(l3backend)
+Requires:	texlive(l3kernel)
+Requires:	texlive(latex)
+Requires:	texlive(latex-fonts)
+Requires:	texlive(latexconfig)
+Requires:	texlive(mltex.bin)
+Requires:	texlive(plain)
+Requires:	texlive(tex-ini-files)
+Requires:	texlive(unicode-data)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-MLTeX is a modification of TeX version >=3.0 that allows the
-hyphenation of words with accented letters using ordinary
-Computer Modern (CM) fonts. The system is distributed as a TeX
-change file.
+MLTeX is a modification of TeX version >=3.0 that allows the hyphenation
+of words with accented letters using ordinary Computer Modern (CM)
+fonts. The system is distributed as a TeX change file.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/mltex/lo1enc.def
-%{_texmfdistdir}/tex/latex/mltex/mlltxchg.def
-%{_texmfdistdir}/tex/latex/mltex/mltex.sty
-%{_texmfdistdir}/tex/mltex/config/mltex.ini
-%_texmf_fmtutil_d/mltex
-%doc %{_texmfdistdir}/doc/latex/mltex/README
-%doc %{_texmfdistdir}/doc/latex/mltex/mltex.txt
-%doc %{_texmfdistdir}/doc/latex/mltex/testmlft.dvi
-%doc %{_texmfdistdir}/doc/latex/mltex/testmlft.tex
-%doc %{_texmfdistdir}/doc/latex/mltex/testmlsw.dvi
-%doc %{_texmfdistdir}/doc/latex/mltex/testmlsw.tex
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf-dist %{buildroot}%{_datadir}
-mkdir -p %{buildroot}%{_texmf_fmtutil_d}
-cat > %{buildroot}%{_texmf_fmtutil_d}/mltex <<EOF
-#
-# from mltex:
-mllatex pdftex language.dat -translate-file=cp227.tcx -mltex *mllatex.ini
-mltex pdftex - -translate-file=cp227.tcx -mltex mltex.ini
-EOF
