@@ -1,5 +1,6 @@
 %global tl_name mltex
 %global tl_revision 71363
+%global tl_bin_links mllatex:pdftex mltex:pdftex
 
 Name:		texlive-%{tl_name}
 Epoch:		1
@@ -30,6 +31,8 @@ Requires:	texlive(plain)
 Requires:	texlive(tex-ini-files)
 Requires:	texlive(unicode-data)
 Provides:	texlive(%{tl_name}) = %{tl_revision}
+Provides:	texlive(%{tl_name}.bin) = %{tl_revision}
+Provides:	texlive-%{tl_name}.bin = %{EVRD}
 
 %description
 MLTeX is a modification of TeX version >=3.0 that allows the hyphenation
